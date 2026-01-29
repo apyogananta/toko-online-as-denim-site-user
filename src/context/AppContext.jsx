@@ -152,18 +152,16 @@ const AppProvider = ({ children }) => {
               qty: item.qty,
               productData: item.product
                 ? {
-                    id: item.product.id,
-                    name: item.product.name,
-                    slug: item.product.slug,
-                    stock: item.product.stock,
-                    size: item.product.size,
-                    weight: item.product.weight,
-                    original_price: item.product.original_price,
-                    sale_price: item.product.sale_price,
-                    effective_price: item.product.effective_price,
-                    primary_image:
-                      item.product.primary_image || "/placeholder.jpg",
-                  }
+                  id: item.product.id,
+                  name: item.product.name,
+                  slug: item.product.slug,
+                  stock: item.product.stock,
+                  stock: item.product.stock,
+                  weight: item.product.weight,
+                  original_price: item.product.original_price,
+                  primary_image:
+                    item.product.primary_image || "/placeholder.jpg",
+                }
                 : null,
             }))
             .filter((item) => item.productData !== null);
@@ -356,7 +354,7 @@ const AppProvider = ({ children }) => {
     cartItems.reduce((total, item) => total + item.qty, 0);
   const getCartAmount = () =>
     cartItems.reduce((total, cartItem) => {
-      const price = cartItem.productData?.effective_price ?? 0;
+      const price = cartItem.productData?.original_price ?? 0;
       return total + price * cartItem.qty;
     }, 0);
 

@@ -36,7 +36,7 @@ const Addresses = () => {
   const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
-    document.title = "AS Denim - Alamat";
+    document.title = "historich-fleur - Alamat";
   }, []);
 
   const fetchAddresses = useCallback(async () => {

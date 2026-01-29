@@ -6,7 +6,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ForgotPassword = () => {
   useEffect(() => {
-    document.title = "AS Denim - Lupa Password";
+    document.title = "Historich Fleur - Lupa Password";
   }, []);
 
   const [email, setEmail] = useState("");
@@ -41,11 +41,11 @@ const ForgotPassword = () => {
       if (response.ok) {
         toast.success(
           data.message ||
-            "Link reset password telah dikirim (jika email terdaftar)."
+          "Link reset password telah dikirim (jika email terdaftar)."
         );
         setMessage(
           data.message ||
-            "Link reset password telah dikirim. Silakan cek email Anda."
+          "Link reset password telah dikirim. Silakan cek email Anda."
         );
         setEmail("");
         setErrors({});
@@ -118,11 +118,10 @@ const ForgotPassword = () => {
             type="email"
             name="email"
             placeholder="Masukkan Email Anda"
-            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${
-              errors.email
+            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${errors.email
                 ? "border-red-500 ring-red-500"
                 : "border-gray-300 focus:border-black focus:ring-black"
-            }`}
+              }`}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -146,11 +145,10 @@ const ForgotPassword = () => {
         <button
           type="submit"
           disabled={isLoading || !!message}
-          className={`w-full flex justify-center items-center bg-black text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${
-            isLoading || message
+          className={`w-full flex justify-center items-center bg-black text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${isLoading || message
               ? "opacity-70 cursor-not-allowed"
               : "hover:bg-gray-900"
-          }`}
+            }`}
         >
           {isLoading ? (
             <FontAwesomeIcon icon={faSpinner} spin className="mr-2" />

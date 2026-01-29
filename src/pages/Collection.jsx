@@ -31,12 +31,10 @@ const formatProductItem = (item) => {
     return null;
   }
   const originalPriceValue = item.original_price ?? 0;
-  const salePriceValue = item.sale_price ?? null;
   return {
     id: item.id,
     name: item.name,
     original_price: originalPriceValue,
-    sale_price: salePriceValue,
     image: item.primary_image ? item.primary_image : "/placeholder.jpg",
     category: item.category?.name || "Unknown",
     description: item.description,
@@ -76,7 +74,7 @@ const Collection = () => {
             const text = await response.text();
             const json = JSON.parse(text);
             errorBody = json.message || JSON.stringify(json);
-          } catch (parseError) {}
+          } catch (parseError) { }
           throw new Error(`Gagal mengambil kategori: ${errorBody}`);
         }
         const responseData = await response.json();
@@ -165,7 +163,7 @@ const Collection = () => {
             const text = await response.text();
             const json = JSON.parse(text);
             errorBody = json.message || JSON.stringify(json);
-          } catch (parseError) {}
+          } catch (parseError) { }
           throw new Error(`Gagal mengambil produk: ${errorBody}`);
         }
         const responseData = await response.json();
@@ -310,10 +308,9 @@ const Collection = () => {
           <label
             key={cat.id}
             className={`px-4 py-1.5 border rounded-full cursor-pointer text-sm whitespace-nowrap transition-colors duration-150 ease-in-out
-              ${
-                selectedCategoryIds.includes(cat.id)
-                  ? "bg-neutral-800 text-white border-neutral-800"
-                  : "bg-neutral-100 text-neutral-700 border-neutral-300 hover:bg-neutral-200 hover:border-neutral-400"
+              ${selectedCategoryIds.includes(cat.id)
+                ? "bg-neutral-800 text-white border-neutral-800"
+                : "bg-neutral-100 text-neutral-700 border-neutral-300 hover:bg-neutral-200 hover:border-neutral-400"
               }`}
           >
             <input
@@ -403,11 +400,10 @@ const Collection = () => {
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1 || !paginationData?.links?.prev}
-                className={`px-4 py-2 border rounded text-sm ${
-                  currentPage === 1 || !paginationData?.links?.prev
+                className={`px-4 py-2 border rounded text-sm ${currentPage === 1 || !paginationData?.links?.prev
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-white text-gray-700 hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 Sebelumnya
               </button>
@@ -424,12 +420,11 @@ const Collection = () => {
                   currentPage === paginationData?.meta?.last_page ||
                   !paginationData?.links?.next
                 }
-                className={`px-4 py-2 border rounded text-sm ${
-                  currentPage === paginationData?.meta?.last_page ||
-                  !paginationData?.links?.next
+                className={`px-4 py-2 border rounded text-sm ${currentPage === paginationData?.meta?.last_page ||
+                    !paginationData?.links?.next
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-white text-gray-700 hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 Berikutnya
               </button>

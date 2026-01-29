@@ -14,7 +14,7 @@ import ProductRecommendations from "./ProductRecommendations";
 
 const Cart = () => {
   useEffect(() => {
-    document.title = "AS Denim - Keranjang";
+    document.title = "historich-fleur - Keranjang";
   }, []);
 
   const {
@@ -171,14 +171,10 @@ const Cart = () => {
                   <div className="flex items-center gap-4 mt-1">
                     <p className="text-sm text-gray-700 font-semibold">
                       {currency}
-                      {productData.effective_price?.toLocaleString("id-ID") ??
+                      {productData.original_price?.toLocaleString("id-ID") ??
                         "N/A"}
                     </p>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {" "}
-                    Ukuran: {productData.size}{" "}
-                  </p>
                 </div>
               </div>
               {/* Kuantitas */}
@@ -201,9 +197,8 @@ const Cart = () => {
                     handleQuantityBlur(item.id, productData.stock, e)
                   }
                   disabled={isItemUpdating}
-                  className={`w-16 border border-gray-300 px-2 py-1 rounded text-center focus:outline-none focus:ring-1 focus:ring-black ${
-                    isItemUpdating ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`w-16 border border-gray-300 px-2 py-1 rounded text-center focus:outline-none focus:ring-1 focus:ring-black ${isItemUpdating ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   aria-label={`Jumlah untuk ${productData.name}`}
                 />
                 {isItemUpdating && (

@@ -54,7 +54,7 @@ const Product = () => {
             product.primary_image || imageUrls[0] || "/placeholder.jpg";
           setSelectedImage(initialSelected);
 
-          document.title = `AS Denim - ${product.name}`;
+          document.title = `Historich Fleur - ${product.name}`;
         } else {
           console.error(
             "Format data produk dari API tidak sesuai (struktur nested):",
@@ -102,11 +102,7 @@ const Product = () => {
     );
   }
 
-  const effectivePrice = productData.sale_price ?? productData.original_price;
-  const hasDiscount =
-    productData.sale_price !== null &&
-    productData.sale_price > 0 &&
-    productData.sale_price < productData.original_price;
+
 
   const handleAddToCart = () => {
     if (productData) {
@@ -144,11 +140,10 @@ const Product = () => {
                         onClick={() => setSelectedImage(imageUrl)}
                         src={imageUrl}
                         alt={`Thumbnail ${index + 1}`}
-                        className={`cursor-pointer rounded-md border-2 w-full h-full object-cover transition-all duration-200 ${
-                          selectedImage === imageUrl
-                            ? "border-black"
-                            : "border-gray-300 hover:border-gray-500"
-                        }`}
+                        className={`cursor-pointer rounded-md border-2 w-full h-full object-cover transition-all duration-200 ${selectedImage === imageUrl
+                          ? "border-black"
+                          : "border-gray-300 hover:border-gray-500"
+                          }`}
                         loading="lazy"
                         onError={(e) => {
                           e.target.onerror = null;
@@ -175,28 +170,11 @@ const Product = () => {
               {productData.name}
             </h1>
             <div className="mb-6">
-              {!hasDiscount ? (
-                <p className="text-2xl sm:text-3xl font-bold text-gray-800">
-                  Rp {productData.original_price.toLocaleString("id-ID")}
-                </p>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <p className="text-2xl sm:text-3xl font-bold text-red-600">
-                    Rp {effectivePrice.toLocaleString("id-ID")}
-                  </p>
-                  <p className="text-lg text-gray-400 line-through">
-                    Rp {productData.original_price.toLocaleString("id-ID")}
-                  </p>
-                </div>
-              )}
+              <p className="text-2xl sm:text-3xl font-bold text-gray-800">
+                Rp {productData.original_price.toLocaleString("id-ID")}
+              </p>
             </div>
             <div className="text-sm text-gray-500 mb-4 space-y-1">
-              {productData.brand && (
-                <div>
-                  Brand:{" "}
-                  <span className="text-gray-800">{productData.brand}</span>
-                </div>
-              )}
               {productData.color && (
                 <div>
                   Warna:{" "}
@@ -204,27 +182,20 @@ const Product = () => {
                 </div>
               )}
             </div>
-            <div className="mb-6">
-              <p className="mb-2 font-medium text-sm">Ukuran:</p>
-              <span className="inline-block px-3 py-1 border border-gray-300 text-gray-800 rounded text-sm">
-                {productData.size || "-"}
-              </span>
-            </div>
+
             <p
-              className={`mb-6 text-sm ${
-                isOutOfStock ? "text-red-600 font-semibold" : "text-gray-600"
-              }`}
+              className={`mb-6 text-sm ${isOutOfStock ? "text-red-600 font-semibold" : "text-gray-600"
+                }`}
             >
               Stok: {isOutOfStock ? "Habis" : productData.stock}
             </p>
             <button
               onClick={handleAddToCart}
               disabled={isOutOfStock}
-              className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded transition-colors duration-200 ${
-                isOutOfStock
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "hover:bg-gray-800"
-              }`}
+              className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded transition-colors duration-200 ${isOutOfStock
+                ? "bg-gray-400 cursor-not-allowed"
+                : "hover:bg-gray-800"
+                }`}
             >
               {isOutOfStock ? "Stok Habis" : "Tambah ke Keranjang"}
             </button>

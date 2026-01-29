@@ -93,7 +93,7 @@ const Categories = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         responsive: [
-             {
+            {
                 breakpoint: 1024, // lg
                 settings: {
                     slidesToShow: Math.min(3, categories.length),
@@ -109,7 +109,7 @@ const Categories = () => {
                 breakpoint: 640, // sm
                 settings: {
                     slidesToShow: 1,
-                     arrows: categories.length > 1
+                    arrows: categories.length > 1
                 }
             }
         ]
@@ -132,19 +132,19 @@ const Categories = () => {
                         {categories.map((category) => (
                             <div key={category.id} className="px-2 md:px-3">
                                 <div
-                                    className="cursor-pointer group flex flex-col items-center p-4 bg-gradient-to-r from-gray-200 to-white rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 h-80"
+                                    className="cursor-pointer group flex flex-col items-center p-4 bg-gradient-to-br from-white via-rose-50 to-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                                     onClick={() => navigate(`/collection?category=${category.id}`)}
                                 >
-                                    <div className="h-52 w-full mb-2 overflow-hidden rounded-lg">
+                                    <div className="w-full aspect-square overflow-hidden rounded-lg">
                                         <img
                                             src={category.image_url || '/placeholder.jpg'}
                                             alt={category.name}
-                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                                             loading="lazy"
-                                            onError={(e) => { e.target.onerror = null; e.target.src='/placeholder.jpg' }}
+                                            onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.jpg' }}
                                         />
                                     </div>
-                                    <p className="flex-grow flex items-center text-lg font-semibold text-gray-400 text-center mt-2 group-hover:text-black transition-colors duration-300">
+                                    <p className="text-lg font-bold text-gray-800 text-center mt-4 group-hover:text-rose-700 transition-colors duration-300">
                                         {category.name}
                                     </p>
                                 </div>

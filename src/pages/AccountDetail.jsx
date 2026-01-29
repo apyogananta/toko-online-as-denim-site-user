@@ -18,7 +18,7 @@ const AccountDetails = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
-        document.title = "AS Denim - Detail Akun";
+        document.title = "historich-fleur - Detail Akun";
     }, []);
 
     useEffect(() => {

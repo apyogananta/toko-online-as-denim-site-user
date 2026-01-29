@@ -12,7 +12,7 @@ const ProductRecommendations = () => {
         const fetchRecommendations = async () => {
             setLoadingRecs(true);
             setErrorRecs(null);
-            setRecommendations([]); 
+            setRecommendations([]);
 
             if (!token) {
                 console.log("ProductRecommendations: No token found, skipping fetch.");
@@ -31,21 +31,20 @@ const ProductRecommendations = () => {
                             id: item.id,
                             name: item.name,
                             original_price: item.original_price ?? 0,
-                            sale_price: item.sale_price ?? null,
                             image: item.primary_image || '/placeholder.jpg',
                             slug: item.slug,
                             stock: item.stock ?? 1,
                         }));
                         setRecommendations(formattedRecs);
                     } else if (Array.isArray(data)) {
-                         const formattedRecs = data.map(item => ({
+                        const formattedRecs = data.map(item => ({
                             id: item.id, name: item.name, original_price: item.original_price ?? 0,
-                            sale_price: item.sale_price ?? null, image: item.primary_image || '/placeholder.jpg',
+                            image: item.primary_image || '/placeholder.jpg',
                             slug: item.slug, stock: item.stock ?? 1,
-                         }));
-                         setRecommendations(formattedRecs);
+                        }));
+                        setRecommendations(formattedRecs);
                     }
-                     else {
+                    else {
                         console.warn("Recommendation data format unexpected:", data);
                         setRecommendations([]);
                     }
@@ -58,7 +57,7 @@ const ProductRecommendations = () => {
                 if (error.message !== "Unauthorized" && error.message !== "Forbidden" && error.message !== "User not authenticated") {
                     setErrorRecs("Gagal memuat rekomendasi."); // Tampilkan error umum saja
                 }
-                 setRecommendations([]);
+                setRecommendations([]);
             } finally {
                 setLoadingRecs(false);
             }

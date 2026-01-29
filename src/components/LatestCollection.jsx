@@ -24,7 +24,6 @@ const LatestCollection = () => {
                         id: product.id,
                         name: product.name,
                         original_price: product.original_price,
-                        sale_price: product.sale_price,
                         image: product.primary_image || '/placeholder.jpg',
                         slug: product.slug,
                         stock: product.stock,
@@ -78,7 +77,6 @@ const LatestCollection = () => {
                                 image={item.image}
                                 name={item.name}
                                 original_price={item.original_price}
-                                sale_price={item.sale_price}
                                 slug={item.slug}
                                 stock={item.stock}
                             />

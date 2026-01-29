@@ -26,13 +26,13 @@ import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col">
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <Navbar />
       <SearchBar />
       <ScrollToTop />
 
-      <main className="flex-1 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] pt-4 pb-10">
+      <main className="flex-1 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] pt-24 pb-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />

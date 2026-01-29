@@ -4,7 +4,7 @@ import { FaBox, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 
 const Dashboard = () => {
   useEffect(() => {
-    document.title = "AS Denim - Dashboard";
+    document.title = "historich-fleur - Dashboard";
   }, []);
 
   const tabs = [

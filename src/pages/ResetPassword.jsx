@@ -20,7 +20,7 @@ const ResetPassword = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    document.title = "AS Denim - Reset Password";
+    document.title = "Historich Fleur - Reset Password";
     const query = new URLSearchParams(search);
     const urlToken = query.get("token");
     const urlEmail = query.get("email");
@@ -163,11 +163,10 @@ const ResetPassword = () => {
             placeholder="Masukkan password baru"
             value={formData.password}
             onChange={handleChange}
-            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${
-              errors.password
+            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${errors.password
                 ? "border-red-500 ring-red-500"
                 : "border-gray-300 focus:border-black focus:ring-black"
-            }`}
+              }`}
             aria-invalid={!!errors.password}
             aria-describedby={
               errors.password ? "password-error-reset" : undefined
@@ -196,11 +195,10 @@ const ResetPassword = () => {
             placeholder="Ulangi password baru"
             value={formData.password_confirmation}
             onChange={handleChange}
-            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${
-              errors.password_confirmation
+            className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-1 ${errors.password_confirmation
                 ? "border-red-500 ring-red-500"
                 : "border-gray-300 focus:border-black focus:ring-black"
-            }`}
+              }`}
             aria-invalid={!!errors.password_confirmation}
             aria-describedby={
               errors.password_confirmation
@@ -224,9 +222,8 @@ const ResetPassword = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full flex justify-center items-center bg-black text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${
-            isLoading ? "opacity-70 cursor-not-allowed" : ""
-          }`}
+          className={`w-full flex justify-center items-center bg-black text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
         >
           {isLoading ? (
             <FontAwesomeIcon icon={faSpinner} spin className="mr-2" />

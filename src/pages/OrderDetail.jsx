@@ -34,7 +34,7 @@ const OrderDetail = () => {
   };
 
   useEffect(() => {
-    document.title = `AS Denim - Detail Order`;
+    document.title = `Historich Fleur - Detail Order`;
   }, []);
 
   const fetchOrder = useCallback(async () => {
@@ -52,7 +52,7 @@ const OrderDetail = () => {
         }
         throw new Error(
           errorData?.message ||
-            `Gagal mengambil detail pesanan (${response.status})`
+          `Gagal mengambil detail pesanan (${response.status})`
         );
       }
 
@@ -66,7 +66,7 @@ const OrderDetail = () => {
         Array.isArray(orderData.items)
       ) {
         setOrder(orderData);
-        document.title = `AS Denim - Order ${orderData.order_number}`;
+        document.title = `Historich Fleur - Order ${orderData.order_number}`;
       } else {
         throw new Error("Format data detail pesanan tidak valid.");
       }
@@ -122,7 +122,7 @@ const OrderDetail = () => {
     elementsToHide.forEach((el) => (el.style.visibility = "hidden"));
 
     const storeNameEl = document.createElement("h1");
-    storeNameEl.textContent = "AS Denim";
+    storeNameEl.textContent = "Historich Fleur";
     storeNameEl.className = "text-center text-2xl font-bold mb-6 pt-4";
     invoiceElement.prepend(storeNameEl);
 
@@ -304,8 +304,8 @@ const OrderDetail = () => {
               </span>{" "}
               {order.order_date
                 ? format(new Date(order.order_date), "dd MMM yyyy, HH:mm", {
-                    locale: id,
-                  })
+                  locale: id,
+                })
                 : "-"}
             </div>
             <div>
@@ -373,13 +373,12 @@ const OrderDetail = () => {
                 <p>
                   <span className="font-medium text-gray-600">Status:</span>{" "}
                   <span
-                    className={`capitalize font-medium px-1.5 py-0.5 rounded text-xs ${
-                      order.shipment.status === "delivered"
+                    className={`capitalize font-medium px-1.5 py-0.5 rounded text-xs ${order.shipment.status === "delivered"
                         ? "bg-green-100 text-green-800"
                         : order.shipment.status === "shipped"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-yellow-100 text-yellow-800"
+                      }`}
                   >
                     {order.shipment.status}
                   </span>

@@ -5,24 +5,13 @@ const ProductItem = ({
     image = "/placeholder.jpg",
     name = "Unknown Product",
     original_price = 0,
-    sale_price = null,
     slug = null,
     stock = 1,
 }) => {
     const isOutOfStock = stock <= 0; // Lebih aman pakai <= 0
-    const hasDiscount = sale_price !== null && sale_price > 0 && sale_price < original_price;
-    const discountPercentage = hasDiscount
-        ? Math.round(((original_price - sale_price) / original_price) * 100)
-        : 0;
-
     const productContent = (
         <>
-            <div className="relative w-full aspect-square overflow-hidden rounded-xl"> {}
-                {hasDiscount && discountPercentage > 0 && (
-                    <span className="absolute top-2 left-2 z-10 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                        -{discountPercentage}%
-                    </span>
-                )}
+            <div className="relative w-full aspect-square overflow-hidden rounded-xl"> { }
                 <img
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     src={image}
@@ -42,20 +31,9 @@ const ProductItem = ({
             </p>
 
             <div className="flex flex-col items-center mt-1">
-                {hasDiscount ? (
-                    <>
-                        <p className="text-xs text-gray-400 line-through">
-                            Rp{original_price.toLocaleString("id-ID")}
-                        </p>
-                        <p className="text-sm font-bold text-red-600">
-                            Rp{sale_price.toLocaleString("id-ID")}
-                        </p>
-                    </>
-                ) : (
-                    <p className="text-sm font-bold text-gray-800">
-                        Rp{original_price.toLocaleString("id-ID")}
-                    </p>
-                )}
+                <p className="text-sm font-bold text-gray-800">
+                    Rp{original_price.toLocaleString("id-ID")}
+                </p>
             </div>
         </>
     );
@@ -67,7 +45,7 @@ const ProductItem = ({
 
 
     return (
-        <div className="flex flex-col justify-between p-3 bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 h-full overflow-hidden">
+        <div className="flex flex-col justify-between p-3 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full overflow-hidden border border-rose-100 hover:border-rose-200">
             <WrapperComponent {...wrapperProps}>
                 {productContent}
             </WrapperComponent>
@@ -84,7 +62,6 @@ ProductItem.propTypes = {
     name: PropTypes.string.isRequired,
     original_price: PropTypes.number,
     stock: PropTypes.number.isRequired,
-    sale_price: PropTypes.number,
     slug: PropTypes.string,
 };
 

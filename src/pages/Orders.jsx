@@ -21,7 +21,7 @@ const Orders = () => {
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   useEffect(() => {
-    document.title = "AS Denim - Pesanan Saya";
+    document.title = "Historich Fleur - Pesanan Saya";
   }, []);
 
   const fetchOrders = useCallback(
@@ -134,25 +134,24 @@ const Orders = () => {
                     <td className="border-b p-3 whitespace-nowrap">
                       {order.order_date
                         ? format(
-                            new Date(order.order_date),
-                            "dd MMM yyyy HH:mm",
-                            { locale: id }
-                          )
+                          new Date(order.order_date),
+                          "dd MMM yyyy HH:mm",
+                          { locale: id }
+                        )
                         : "-"}
                     </td>
                     <td className="border-b p-3">
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
-                          order.status === "processed"
+                        className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${order.status === "processed"
                             ? "bg-blue-100 text-blue-800"
                             : order.status === "pending"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : order.status === "awaiting_payment"
-                            ? "bg-orange-100 text-orange-800"
-                            : order.status === "cancelled"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-gray-100 text-gray-800"
-                        }`}
+                              ? "bg-yellow-100 text-yellow-800"
+                              : order.status === "awaiting_payment"
+                                ? "bg-orange-100 text-orange-800"
+                                : order.status === "cancelled"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-800"
+                          }`}
                       >
                         {order.status.replace("_", " ")}
                       </span>
@@ -180,11 +179,10 @@ const Orders = () => {
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className={`px-3 py-1 border rounded text-sm ${
-                  currentPage === 1
+                className={`px-3 py-1 border rounded text-sm ${currentPage === 1
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-white text-gray-700 hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 &lt; Sebelumnya
               </button>
@@ -195,11 +193,10 @@ const Orders = () => {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === paginationData.meta.last_page}
-                className={`px-3 py-1 border rounded text-sm ${
-                  currentPage === paginationData.meta.last_page
+                className={`px-3 py-1 border rounded text-sm ${currentPage === paginationData.meta.last_page
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-white text-gray-700 hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 Berikutnya &gt;
               </button>

@@ -24,7 +24,7 @@ const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.title = `AS Denim - ${isLogin ? "Masuk" : "Daftar"}`;
+    document.title = `Historich Fleur - ${isLogin ? "Masuk" : "Daftar"}`;
   }, [isLogin]);
 
   const handleChange = (e) => {
@@ -133,11 +133,10 @@ const AuthForm = () => {
               value={formData[field.name]}
               onChange={handleChange}
               placeholder={field.label}
-              className={`w-full px-4 py-2 border ${
-                errors[field.name]
+              className={`w-full px-4 py-2 border ${errors[field.name]
                   ? "border-red-500 ring-1 ring-red-500"
                   : "border-gray-300"
-              } rounded-md focus:outline-none focus:ring-2 focus:ring-black`}
+                } rounded-md focus:outline-none focus:ring-2 focus:ring-black`}
               aria-invalid={!!errors[field.name]}
               aria-describedby={
                 errors[field.name] ? `${field.name}-error` : undefined
@@ -191,9 +190,8 @@ const AuthForm = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full flex justify-center items-center bg-black hover:bg-gray-900 text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${
-            isLoading ? "opacity-70 cursor-not-allowed" : ""
-          }`}
+          className={`w-full flex justify-center items-center bg-black hover:bg-gray-900 text-white font-medium px-8 py-2 mt-4 rounded-md transition-all duration-300 ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
         >
           {isLoading ? (
             <FontAwesomeIcon icon={faSpinner} spin className="mr-2" />

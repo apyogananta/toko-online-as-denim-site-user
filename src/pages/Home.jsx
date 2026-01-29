@@ -4,7 +4,7 @@ import LatestCollection from "../components/LatestCollection";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "AS Denim";
+    document.title = "Historich-Fleur";
   }, []);
 
   return (

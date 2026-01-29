@@ -31,7 +31,7 @@ const PlaceOrder = () => {
   };
 
   useEffect(() => {
-    document.title = "AS Denim - Pembayaran";
+    document.title = "Historich Fleur - Pembayaran";
   }, []);
 
   useEffect(() => {
@@ -215,7 +215,7 @@ const PlaceOrder = () => {
       const id = data.id;
       const snapContainerId = "snap-container";
       const snapContainer = document.getElementById(snapContainerId);
-      
+
       if (!snapContainer) {
         throw new Error(
           "Komponen pembayaran (#snap-container) tidak ditemukan."
@@ -237,8 +237,7 @@ const PlaceOrder = () => {
           onError: function (result) {
             console.error("Payment Error:", result);
             toast.error(
-              `Pembayaran gagal: ${
-                result?.status_message || "Silakan coba lagi."
+              `Pembayaran gagal: ${result?.status_message || "Silakan coba lagi."
               }`
             );
           },
@@ -301,11 +300,10 @@ const PlaceOrder = () => {
               </div>
             ) : (
               <div
-                className={`border ${
-                  fetchError
+                className={`border ${fetchError
                     ? "border-red-200 bg-red-50 text-red-700"
                     : "border-gray-200 bg-gray-50 text-gray-500"
-                } p-4 rounded-md mt-4 shadow-sm text-center text-sm`}
+                  } p-4 rounded-md mt-4 shadow-sm text-center text-sm`}
               >
                 <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
                 {fetchError || "Alamat utama tidak ditemukan."}
@@ -404,11 +402,10 @@ const PlaceOrder = () => {
                     {shippingOptions.map((option, index) => (
                       <div
                         key={`${option.code}-${option.service}-${index}`}
-                        className={`p-3 cursor-pointer hover:bg-gray-50 transition-colors ${
-                          selectedShippingOption === option
+                        className={`p-3 cursor-pointer hover:bg-gray-50 transition-colors ${selectedShippingOption === option
                             ? "bg-blue-50 border-l-4 border-blue-500"
                             : ""
-                        }`}
+                          }`}
                         onClick={() => setSelectedShippingOption(option)}
                       >
                         <div className="flex items-start">
@@ -484,16 +481,15 @@ const PlaceOrder = () => {
               <button
                 type="button"
                 onClick={onSubmitHandler}
-                className={`w-full flex justify-center items-center bg-black text-white px-4 py-3 text-base font-semibold rounded-md transition-colors duration-200 ${
-                  !defaultAddress ||
-                  cartItems.length === 0 ||
-                  !selectedShippingOption ||
-                  isProcessing ||
-                  addressLoading ||
-                  shippingLoading
+                className={`w-full flex justify-center items-center bg-black text-white px-4 py-3 text-base font-semibold rounded-md transition-colors duration-200 ${!defaultAddress ||
+                    cartItems.length === 0 ||
+                    !selectedShippingOption ||
+                    isProcessing ||
+                    addressLoading ||
+                    shippingLoading
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-                }`}
+                  }`}
                 disabled={
                   !defaultAddress ||
                   cartItems.length === 0 ||
